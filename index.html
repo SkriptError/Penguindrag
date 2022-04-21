@@ -1,0 +1,178 @@
+<html>
+<h1>Another Custom Website by <b>SkriptError</b></h1>
+<p>(couldn't find out how to make the penguin change colors so you just get the background.)</p>
+<button onclick="Color('red')">Red</button>
+<button onclick="Color('blue')" class="blue">Blue</button>
+<button onclick="Color('green')" class="green">Green</button>
+<button onclick="Color('linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet)')" class="rainbow">Rainbow</button>
+<br>
+<br>
+<div id="penguin">
+  <img draggable="false" class="penguin" src="http://assets.stickpng.com/images/580b57fbd9996e24bc43bc96.png">
+</div>
+<br>
+<br>
+<br>
+<p>sus</p>
+
+<style>
+
+#penguin {
+  position: absolute;
+  z-index: 9;
+  background-color: black;
+  text-align: center;
+}
+
+p {
+	color: white;
+	margin-top: -20px;
+}
+
+b {
+	color: white;
+	border: 3px solid white;
+	border-radius: 10px;
+}
+
+b:hover {
+	color: red;
+	border: 3px solid red;
+}
+
+h1 {
+	color: white;
+}
+
+body {
+	background: black;
+}
+
+.penguin {
+	width: 100px;
+	height: 100px;
+	background:linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet);
+}
+
+button {
+	background-color: black;
+	color: red;
+	width: 200px;
+	height: 50px;
+	border: 3px solid red;
+	transition: ease-out 1s;
+
+}
+
+
+button:hover {
+	box-shadow: inset 300px 0 0 0 red;
+	color: black;
+
+}
+
+.rainbow {
+	background: linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet);
+	color: yellow;
+	width: 200px;
+	height: 50px;
+	border: 3px solid yellow;
+	transition: ease-out 1s;
+
+}
+
+
+.rainbow:hover {
+	box-shadow: inset 300px 0 0 0 yellow;
+	color: black;
+
+}
+
+.blue {
+	background-color: black;
+	color: blue;
+	width: 200px;
+	height: 50px;
+	border: 3px solid blue;
+	transition: ease-out 1s;
+
+}
+
+.blue:hover {
+	box-shadow: inset 300px 0 0 0 blue;
+	color: black;
+
+}
+
+.green {
+	background-color: black;
+	color: green;
+	width: 200px;
+	height: 50px;
+	border: 3px solid green;
+	transition: ease-out 1s;
+
+}
+
+.green:hover {
+	box-shadow: inset 300px 0 0 0 green;
+	color: black;
+
+}
+
+</style>
+
+<script>
+	function Color(color){
+		document.querySelector('.penguin').style.background = color;
+}
+
+</script>
+
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("penguin"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id)) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+</html>
