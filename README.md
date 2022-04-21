@@ -1,1 +1,2 @@
 # Penguindrag
+again another bored website that I make when I hate school thanks richland school district for the idea if you are reading go die a in a sewer. ur classes are boring af, please kys especially Richland High School.
